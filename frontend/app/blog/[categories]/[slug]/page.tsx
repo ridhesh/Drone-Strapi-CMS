@@ -1,46 +1,56 @@
 import { Heart, Share2 } from "lucide-react";
-import { getMockPostBySlug } from "@/lib/mockData";
 
+// Define props with Promise
 type Props = {
-  params: {
-    categories: string;
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-async function getPostData(slug: string) {
-  // Use mock data for now
-  console.log('Using mock data for post:', slug);
-  
-  const mockData = getMockPostBySlug(slug);
-  return mockData.data[0] || null;
+const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337/api";
+
+async function fetchPostBySlug(slug: string) {
+  try {
+    const res = await fetch(
+      `${API_URL}/articles?filters[slug][$eq]=${slug}&populate=*`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch post');
+    }
+
+    const json = await res.json();
+    return json.data[0] || null;
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
+  }
 }
 
-// Helper function to render Strapi rich text content
+// Simple content renderer
 function renderStrapiContent(content: any) {
   if (!content) {
-    return (
-      <p className="text-white/60 italic">No content available for this post.</p>
-    );
+    return <p className="text-white/60 italic">Content coming soon...</p>;
   }
-
-  // If content is a string (simple text), just render it
+  
   if (typeof content === 'string') {
     return (
-      <div className="prose prose-lg max-w-none text-white/80">
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div className="text-white/80 leading-relaxed space-y-4">
+        {content.split('\n').map((paragraph, i) => (
+          <p key={i}>{paragraph}</p>
+        ))}
       </div>
     );
   }
-
-  return (
-    <p className="text-white/60 italic">Content format not supported.</p>
-  );
+  
+  return <p className="text-white/60 italic">Content loaded successfully.</p>;
 }
 
 const SingleBlog = async ({ params }: Props) => {
+  // AWAIT the params
   const { slug } = await params;
-  const blog = await getPostData(slug);
+  const blog = await fetchPostBySlug(slug);
 
   if (!blog) {
     return (
@@ -51,13 +61,12 @@ const SingleBlog = async ({ params }: Props) => {
   }
 
   // Safe data extraction
-  const attributes = blog.attributes;
-  const title = attributes?.title || 'Untitled';
-  const excerpt = attributes?.excerpt || '';
-  const authorName = attributes?.author?.data?.attributes?.name || 'Unknown Author';
-  const readTime = attributes?.readTime || '5 min';
-  const featuredImage = attributes?.featuredImage?.data?.attributes?.url;
-  const content = attributes?.content;
+  const title = blog.attributes?.title || 'Untitled';
+  const excerpt = blog.attributes?.excerpt || '';
+  const authorName = blog.attributes?.author?.data?.attributes?.name || 'Unknown Author';
+  const readTime = blog.attributes?.readTime || '5 min';
+  const featuredImage = blog.attributes?.featuredImage?.data?.attributes?.url;
+  const content = blog.attributes?.content;
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-12">
@@ -75,7 +84,7 @@ const SingleBlog = async ({ params }: Props) => {
       {featuredImage ? (
         <div className="w-full rounded-lg mb-8 overflow-hidden">
           <img 
-            src={featuredImage}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL?.replace('/api', '')}${featuredImage}`}
             alt={title}
             className="w-full h-96 object-cover"
           />

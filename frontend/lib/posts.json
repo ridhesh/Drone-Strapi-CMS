@@ -1,0 +1,170 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "attributes": {
+        "title": "Inside the Autonomy Flight Stack: How Modern UAVs Think",
+        "slug": "inside-the-autonomy-flight-stack",
+        "excerpt": "A deep dive into the decision-making pipeline that powers autonomous UAV missions — from perception to planning.",
+        "content": "Autonomous UAV systems represent the pinnacle of modern aerospace engineering, combining sophisticated algorithms with robust hardware to execute complex missions with minimal human intervention.",
+        "featuredImage": {
+          "data": {
+            "attributes": {
+              "url": "/placeholder-post.png",
+              "alternativeText": "Autonomous flight system diagram",
+              "formats": {
+                "thumbnail": { "url": "/placeholder-post.png" },
+                "small": { "url": "/placeholder-post.png" }
+              }
+            }
+          }
+        },
+        "category": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "name": "Autonomy",
+              "slug": "autonomy",
+              "description": "Autonomous systems and AI technologies"
+            }
+          }
+        },
+        "author": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "name": "Aarav Sharma",
+              "email": "aarav.sharma@vyomgarud.com"
+            }
+          }
+        },
+        "readTime": "12 min",
+        "publishedAt": "2024-01-15T10:00:00.000Z",
+        "createdAt": "2024-01-10T14:30:00.000Z",
+        "updatedAt": "2024-01-12T09:15:00.000Z"
+      }
+    },
+    {
+      "id": 2,
+      "attributes": {
+        "title": "Why Your Drone Battery Doesn't Last — And How To Fix It",
+        "slug": "battery-optimization-tips",
+        "excerpt": "Understanding discharge curves, C-rating, power draw, and thermal management can increase battery life by 40%.",
+        "content": "Battery performance remains one of the most critical factors in UAV operational effectiveness. Understanding the underlying principles can dramatically improve mission success rates.",
+        "featuredImage": {
+          "data": {
+            "attributes": {
+              "url": "/placeholder-post.png",
+              "alternativeText": "Battery optimization techniques",
+              "formats": {
+                "thumbnail": { "url": "/placeholder-post.png" },
+                "small": { "url": "/placeholder-post.png" }
+              }
+            }
+          }
+        },
+        "category": {
+          "data": {
+            "id": 2,
+            "attributes": {
+              "name": "Power Systems",
+              "slug": "power-systems",
+              "description": "Battery and power management technologies"
+            }
+          }
+        },
+        "author": {
+          "data": {
+            "id": 2,
+            "attributes": {
+              "name": "Kavya Reddy",
+              "email": "kavya.reddy@vyomgarud.com"
+            }
+          }
+        },
+        "readTime": "10 min",
+        "publishedAt": "2024-01-10T14:00:00.000Z",
+        "createdAt": "2024-01-05T11:20:00.000Z",
+        "updatedAt": "2024-01-08T16:45:00.000Z"
+      }
+    },
+    {
+      "id": 3,
+      "attributes": {
+        "title": "Advanced Sensor Fusion for Precision Navigation",
+        "slug": "sensor-fusion-navigation",
+        "excerpt": "Exploring how multi-sensor data fusion enables centimeter-level accuracy in GPS-denied environments.",
+        "content": "In challenging operational environments where GPS signals are unreliable or unavailable, advanced sensor fusion techniques become critical for maintaining navigation accuracy.",
+        "featuredImage": {
+          "data": {
+            "attributes": {
+              "url": "/placeholder-post.png",
+              "alternativeText": "Sensor fusion system architecture",
+              "formats": {
+                "thumbnail": { "url": "/placeholder-post.png" },
+                "small": { "url": "/placeholder-post.png" }
+              }
+            }
+          }
+        },
+        "category": {
+          "data": {
+            "id": 3,
+            "attributes": {
+              "name": "Sensors",
+              "slug": "sensors",
+              "description": "Sensor technologies and fusion algorithms"
+            }
+          }
+        },
+        "author": {
+          "data": {
+            "id": 3,
+            "attributes": {
+              "name": "Rohan Mehta",
+              "email": "rohan.mehta@vyomgarud.com"
+            }
+          }
+        },
+        "readTime": "8 min",
+        "publishedAt": "2024-01-08T09:30:00.000Z",
+        "createdAt": "2024-01-03T13:15:00.000Z",
+        "updatedAt": "2024-01-07T10:20:00.000Z"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "attributes": {
+        "name": "Autonomy",
+        "slug": "autonomy",
+        "description": "Autonomous systems and AI technologies for UAV operations"
+      }
+    },
+    {
+      "id": 2,
+      "attributes": {
+        "name": "Power Systems",
+        "slug": "power-systems",
+        "description": "Battery management and power optimization for extended missions"
+      }
+    },
+    {
+      "id": 3,
+      "attributes": {
+        "name": "Sensors",
+        "slug": "sensors",
+        "description": "Sensor technologies and data fusion algorithms"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 10,
+      "pageCount": 1,
+      "total": 3
+    }
+  }
+}

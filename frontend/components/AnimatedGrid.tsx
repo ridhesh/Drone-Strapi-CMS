@@ -38,9 +38,10 @@ export default function AnimatedGrid({
             ? React.Children.toArray(children)
             : [];
 
+    // FIXED: useEffect now returns undefined in all paths
     useEffect(() => {
         const el = containerRef.current;
-        if (!el) return;
+        if (!el) return undefined; // FIX: Return undefined
 
         // If already in view, skip observing
         if ("IntersectionObserver" in window) {
@@ -60,6 +61,7 @@ export default function AnimatedGrid({
         } else {
             // fallback: show immediately
             setInView(true);
+            return undefined; // FIX: Return undefined
         }
     }, [rootMargin]);
 

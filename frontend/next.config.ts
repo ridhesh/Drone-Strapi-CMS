@@ -2,7 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['localhost', '127.0.0.1'],
+    domains: [
+      'localhost', 
+      '127.0.0.1',
+      'drone-strapi-backend.onrender.com', // Add your Render Strapi domain
+      'your-strapi-backend.onrender.com'   // Generic placeholder
+    ],
     remotePatterns: [
       {
         protocol: 'http',
@@ -14,6 +19,17 @@ const nextConfig: NextConfig = {
         protocol: 'http',
         hostname: '127.0.0.1',
         port: '1337',
+        pathname: '/uploads/**',
+      },
+      // ADD THESE FOR RENDER DEPLOYMENT:
+      {
+        protocol: 'https',
+        hostname: 'drone-strapi-backend.onrender.com',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.onrender.com', // Catch-all for any Render subdomain
         pathname: '/uploads/**',
       },
     ],
@@ -41,6 +57,9 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // ADD FOR BETTER RENDER COMPATIBILITY:
+  output: 'standalone', // Better for production
+  trailingSlash: false,
 };
 
 export default nextConfig;
